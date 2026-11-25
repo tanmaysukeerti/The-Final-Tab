@@ -1,159 +1,173 @@
-.small-label {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: rgb(135, 135, 135);
+:root {
+  color-scheme: dark;
+  --terminal-bg: #141310;
+  --terminal-line: #353026;
+  --terminal-text: #e8dfc9;
+  --terminal-muted: #ada48f;
+  --terminal-amber: #efbd72;
+  --terminal-red: #ff8b7f;
 }
 
-.muted {
-  color: rgb(119, 119, 119);
-  font-size: 13px;
+* {
+  box-sizing: border-box;
 }
 
-.file-box,
-.terminal-box {
-  background: rgb(13, 13, 13);
-  border: 1px solid rgb(55, 55, 55);
-  border-left: 3px solid rgb(145, 42, 42);
-  padding: 20px;
-  margin: 25px 0;
-  font-size: 13px;
-  line-height: 1.8;
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(12px, 5vw, 64px);
+  background: radial-gradient(ellipse at top, #2e261b, #0b0a08 65%);
+  color: var(--terminal-text);
+  font-family: Consolas, "Courier New", monospace;
 }
 
-.terminal-box {
-  color: rgb(195, 195, 195);
+.browser {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #514634;
+  border-radius: 12px;
+  background: var(--terminal-bg);
+  box-shadow: 0 24px 80px #000a, 0 0 36px #e39a3114;
 }
 
-.secret-lines p {
-  margin: 7px 0;
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--terminal-line);
+  background: #211d17;
+  color: var(--terminal-amber);
   font-size: 12px;
+  letter-spacing: 0.12em;
 }
 
-.puzzle-form {
+.titlebar p {
+  margin: 0;
+}
+
+.titlebar .version {
+  margin-left: auto;
+  color: var(--terminal-muted);
+  text-align: right;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.window-buttons span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #655642;
+}
+
+.window-buttons span:first-child {
+  background: var(--terminal-amber);
+  box-shadow: 0 0 8px #efbd7266;
+}
+
+.tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 25px;
+  gap: 6px;
+  padding: 12px 14px 0;
+  background: #191611;
 }
 
-.puzzle-form input {
-  background: rgb(15, 15, 15);
-  border: 1px solid rgb(92, 42, 42);
-  color: white;
-  padding: 14px;
-  min-width: 0;
-  max-width: 280px;
-  font-family: Consolas, monospace;
-  outline: none;
-}
-
-.puzzle-form input:focus {
-  border-color: rgb(215, 68, 68);
-  box-shadow: 0 0 12px rgba(215, 68, 68, 0.2);
-}
-
-.game-button {
-  padding: 14px 22px;
-  background: rgb(100, 26, 26);
-  color: white;
-  border: 1px solid rgb(160, 52, 52);
-  font-family: Consolas, monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
+.tabs button {
+  padding: 9px 13px;
+  border: 1px solid var(--terminal-line);
+  border-radius: 6px 6px 0 0;
+  background: #211c15;
+  color: var(--terminal-muted);
+  font: inherit;
+  font-size: 13px;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
-.game-button:hover {
-  background: rgb(155, 34, 34);
-  box-shadow: 0 0 15px rgba(180, 34, 34, 0.3);
+.tabs button:hover {
+  color: var(--terminal-text);
+  background: #30281e;
 }
 
-.game-button.secondary {
-  background: rgb(28, 28, 28);
-  border-color: rgb(90, 90, 90);
+.tabs button.active {
+  border-top-color: var(--terminal-amber);
+  background: #35291b;
+  color: var(--terminal-amber);
 }
 
-.game-button.secondary:hover {
-  background: rgb(55, 55, 55);
-}
-
-.choice-buttons {
+.addressbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 25px;
+  gap: 10px;
+  padding: 10px 16px;
+  border-block: 1px solid var(--terminal-line);
+  background: #100e0b;
+  color: var(--terminal-muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
 }
 
-.glitch-text {
-  color: rgb(225, 65, 65);
-  text-shadow: 2px 0 rgba(255, 0, 0, 0.35), -2px 0 rgba(0, 180, 255, 0.25);
-  animation: glitch 3s infinite;
+#pageContent {
+  min-height: 360px;
+  padding: clamp(20px, 5vw, 48px);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 3px,
+    #0002 3px 4px
+  );
+  line-height: 1.65;
 }
 
-@keyframes glitch {
-  0%, 90%, 100% {
-    transform: translate(0);
-  }
-  92% {
-    transform: translate(2px, -1px);
-  }
-  94% {
-    transform: translate(-2px, 1px);
-  }
-  96% {
-    transform: translate(1px, 2px);
-  }
+#pageContent h1 {
+  margin: 0 0 16px;
+  color: var(--terminal-amber);
+  font-size: clamp(26px, 5vw, 44px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
-.ending {
-  padding: 30px 0;
-  animation: fadeIn 2s ease;
+#pageContent .small-label,
+#pageContent .muted {
+  color: var(--terminal-muted);
 }
 
-.ending h1 {
-  font-size: 30px;
-  letter-spacing: 2px;
+#pageContent .file-box,
+#pageContent .terminal-box {
+  border-color: var(--terminal-line);
+  border-left-color: var(--terminal-amber);
+  background: #0e0d0b;
+  color: var(--terminal-text);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+#pageContent .warning,
+#pageContent .glitch-text {
+  color: var(--terminal-red);
 }
 
-@media (max-width: 600px) {
-  .browser {
-    width: 100%;
-    min-height: 100vh;
-    border-radius: 0;
-  }
-
-  .titlebar {
-    padding: 0 10px;
-    letter-spacing: 0;
-  }
-
-  .version {
-    font-size: 9px;
-  }
-
-  .tab {
-    padding: 12px;
-    font-size: 11px;
-  }
+#pageContent .glitch-text {
+  text-shadow: 2px 0 #a32038, -2px 0 #275d60;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .glitch-text,
-  .ending {
-    animation: none;
-  }
+#status {
+  padding: 12px 16px;
+  border-top: 1px solid var(--terminal-line);
+  background: #191611;
+  color: var(--terminal-amber);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
 
-  .game-button {
-    transition: none;
-  }
+.browser:has(#pageContent .glitch-text) .addressbar {
+  border-color: #6e3330;
+  background: #2d1514;
+  color: var(--terminal-red);
+}
+
+.browser :is(button, input):focus-visible {
+  outline: 2px solid var(--terminal-amber);
+  outline-offset: 2px;
 }
